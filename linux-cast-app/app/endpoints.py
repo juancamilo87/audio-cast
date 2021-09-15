@@ -1,7 +1,7 @@
 from flask import Flask
-import discover_devices
-import player
-app = Flask(__name__)
+
+from . import app, discover_devices, player
+
 
 @app.route("/")
 def home():
@@ -18,6 +18,10 @@ def home():
         })
 
     return {"devices": chromecasts}
+
+@app.route("/cast/<ip>/<port>")
+def cast(ip, port):
+    return "Whatever"
 
 @app.route("/play")
 def play():
