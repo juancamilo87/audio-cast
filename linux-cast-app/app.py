@@ -28,4 +28,3 @@ def play():
 def stop():
     player.stop()
     return "All good 1"
-    

@@ -23,4 +23,3 @@ def getInstance():
     if instance is None:
         instance = vlc.Instance()
     return instance
-    
