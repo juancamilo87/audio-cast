@@ -1,5 +1,6 @@
-from prettytable import PrettyTable
 import pychromecast
+from prettytable import PrettyTable
+
 
 def discover_chromecasts():
     # Fetch known devices
