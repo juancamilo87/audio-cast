@@ -21,7 +21,13 @@ def home():
 
 @app.route("/cast/<ip>/<port>")
 def cast(ip, port):
-    return "Whatever"
+    player.play_to_chromecast(ip, port)
+    return f"Success to {ip} and {port}??"
+
+@app.route("/test")
+def teste():
+    player.test()
+    return "Something"
 
 @app.route("/play")
 def play():
