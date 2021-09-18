@@ -3,7 +3,7 @@ from flask import Flask
 from . import app, discover_devices, player
 
 
-@app.route("/")
+@app.route("/discover")
 def home():
     services = discover_devices.discover_chromecasts()
     chromecasts = []
