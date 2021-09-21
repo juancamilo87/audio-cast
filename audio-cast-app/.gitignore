@@ -1,5 +1,14 @@
-__pycache__
 .vdevenv/
+
+*.pyc
+__pycache__/
+
+instance/
+
+.pytest_cache/
+
 dist/
+build/
+*.egg-info
+
 known_devices.txt
-src/audio_cast.egg-info

@@ -9,7 +9,7 @@
             "request": "launch",
             "module": "flask",
             "env": {
-                "FLASK_APP": "src.audio_cast.webapp",
+                "FLASK_APP": "audio_cast",
                 "FLASK_ENV": "development"
             },
             "args": [

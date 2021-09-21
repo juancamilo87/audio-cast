@@ -6,7 +6,7 @@ import vlc
 # vlc --intf rc --no-video /Downloads/sample.mp3 --sout="#chromecast{ip=192.168.86.27, port=32089}" --demux-filter=demux_chromecast
 _instance: vlc.Instance = None
 player: vlc.MediaPlayer = None
-mp3_file = "app/sample.mp3"
+mp3_file = "audio_cast/sample.mp3"
 
 def play():
     m: vlc.Media = instance().media_new(mp3_file)
