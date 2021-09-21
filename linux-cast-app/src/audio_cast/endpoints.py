@@ -19,15 +19,19 @@ def home():
 
     return {"devices": chromecasts}
 
-@app.route("/cast/<ip>/<port>")
-def cast(ip, port):
+@app.route("/oldcast/<ip>/<port>")
+def oldcast(ip, port):
     player.play_to_chromecast(ip, port)
     return f"Success to {ip} and {port}??"
 
+@app.route("/cast/<input>/<ip>/<port>")
+def cast(input, ip, port):
+    player.play_to_chromecast2(input, ip, port)
+    return f"Success to {ip} and {port}??"
+
 @app.route("/test")
-def teste():
-    player.test()
-    return "Something"
+def test():
+    return "This is a test"
 
 @app.route("/play")
 def play():
