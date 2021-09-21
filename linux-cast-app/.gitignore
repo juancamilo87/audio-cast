@@ -1,3 +1,5 @@
-.vdevenv/
-known_devices.txt
 __pycache__
+.vdevenv/
+dist/
+known_devices.txt
+src/audio_cast.egg-info

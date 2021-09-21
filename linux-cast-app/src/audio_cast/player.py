@@ -23,6 +23,17 @@ def play_to_chromecast(chromecast_ip, port):
     global player
     player = m.player_new_from_media()
     player.play()
+
+def play_to_chromecast2(input, chromecast_ip, port):
+    m: vlc.Media = instance().media_new_location("dshow://")
+    m.add_option(f":adev={input}")
+    m.add_option(":dshow-vdev=None")
+    m.add_option(f":sout=#chromecast{{ip={chromecast_ip}, port={port}}}")
+    m.add_option(f":demux-filter=demux_chromecast")
+    stop()
+    global player
+    player = m.player_new_from_media()
+    player.play()
     
 def test():
     print("This is a test")
