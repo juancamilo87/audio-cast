@@ -1,14 +1,15 @@
-from flask import Flask
+from flask import Flask, Blueprint
 
-from . import app, discover_devices, discover_media, player
+from . import discover_devices, discover_media, player
 
+bp = Blueprint('endpoints', __name__)
 
-@app.route("/discover")
+@bp.route("/discover")
 def home():
     services = discover_devices.discover_chromecasts()
     chromecasts = []
 
-    for chromecast in services:
+    for chromecast in services or []:
         chromecasts.append({
             "ip": chromecast.host,
             "port": chromecast.port,
@@ -19,26 +20,26 @@ def home():
 
     return {"devices": chromecasts}
 
-@app.route("/oldcast/<ip>/<port>")
+@bp.route("/oldcast/<ip>/<port>")
 def oldcast(ip, port):
     player.play_to_chromecast(ip, port)
     return f"Success to {ip} and {port}??"
 
-@app.route("/cast/<input>/<ip>/<port>")
+@bp.route("/cast/<input>/<ip>/<port>")
 def cast(input, ip, port):
     player.play_to_chromecast2(input, ip, port)
     return f"Success to {ip} and {port}??"
 
-@app.route("/test")
+@bp.route("/test")
 def test():
     return {"inputs": discover_media.discover_inputs()}
 
-@app.route("/play")
+@bp.route("/play")
 def play():
     player.play()
     return "All good"
 
-@app.route("/stop")
+@bp.route("/stop")
 def stop():
     player.stop()
     return "All good 1"
