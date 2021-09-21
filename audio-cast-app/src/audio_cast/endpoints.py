@@ -1,6 +1,6 @@
 from flask import Flask
 
-from . import app, discover_devices, player
+from . import app, discover_devices, discover_media, player
 
 
 @app.route("/discover")
@@ -31,7 +31,7 @@ def cast(input, ip, port):
 
 @app.route("/test")
 def test():
-    return "This is a test"
+    return {"inputs": discover_media.discover_inputs()}
 
 @app.route("/play")
 def play():
