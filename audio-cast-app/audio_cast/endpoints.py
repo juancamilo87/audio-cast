@@ -1,12 +1,12 @@
 from flask import Flask, Blueprint, Response
 
-from . import discover_devices, discover_media, player
+from . import discoverer_devices, discoverer_media, player
 
 bp = Blueprint('endpoints', __name__)
 
 @bp.route("/discover/chromecasts")
 def discover_chromecasts():
-    services = discover_devices.discover_chromecasts()
+    services = discoverer_devices.discover_chromecasts()
     chromecasts = []
 
     for chromecast in services or []:
@@ -22,7 +22,7 @@ def discover_chromecasts():
 
 @bp.route("/discover/media")
 def discover_media():
-    return {"inputs": discover_media.discover_inputs()}
+    return {"inputs": discoverer_media.discover_inputs()}
 
 @bp.route("/player/cast/<input>/<ip>/<port>")
 def cast(input, ip, port):
@@ -35,7 +35,7 @@ def play():
     return Response(status=200)
 
 @bp.route("/player/pause")
-def play():
+def pause():
     player.pause()
     return Response(status=200)
 

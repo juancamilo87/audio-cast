@@ -8,22 +8,26 @@ known_devices_name = "known_devices.txt"
 
 def discover_chromecasts():
     # Fetch known devices
-    known_devices = ""
+    known_devices_array = []
     try:
         file = utils.readFile(known_devices_name)
         known_devices = file.read().strip()
         file.close()
+        if known_devices:
+            known_devices_array = known_devices.split(',')
+            print('Previosly known chromecasts:')
+            ip_table = PrettyTable()
+            ip_table.field_names = ["ip"]
+            for device in known_devices_array:
+                ip_table.add_row([device])
+            print(ip_table)
+        else:
+            print('No previously known chromecasts')
     except FileNotFoundError:
         print('No previously known chromecasts')
-    known_devices_array = []
-    if known_devices:
-        known_devices_array = known_devices.split(',')
-        print('Previosly known chromecasts:')
-        ip_table = PrettyTable()
-        ip_table.field_names = ["ip"]
-        for device in known_devices_array:
-            ip_table.add_row([device])
-        print(ip_table)
+    except Exception:
+        print(f'Error reading {known_devices_name} file')
+    
     # Discover devices
     print('Searching chromecasts...')
     if len(known_devices_array) > 0:
