@@ -1,42 +1,32 @@
 import vlc
+from . import utils
 
-# Line in
-# vlc --intf rc --no-video dshow:// vdev="none" adev="Line In (USB AUDIO CODEC)" --sout="#chromecast{ip=192.168.86.31, port=8009}" --demux-filter=demux_chromecast
-# From file
-# vlc --intf rc --no-video /Downloads/sample.mp3 --sout="#chromecast{ip=192.168.86.27, port=32089}" --demux-filter=demux_chromecast
 _instance: vlc.Instance = None
 player: vlc.MediaPlayer = None
-mp3_file = "audio_cast/sample.mp3"
+
+def play_media_to_chromecast(input, chromecast_ip, port):
+    m: vlc.Media
+    if utils.isWindows(): # Windows path uses dshow
+        m = instance().media_new_location("dshow://")
+        m.add_option(f":adev={input}")
+        m.add_option(":dshow-vdev=None")
+    else: # Linux path uses alsa
+        m = instance().media_new_location(f"alsa://plug{input}")
+    m.add_option(f":sout=#chromecast{{ip={chromecast_ip}, port={port}}}")
+    m.add_option(f":demux-filter=demux_chromecast")
+
+    stop()
+    global player
+    player = m.player_new_from_media()
+    player.play()
+
+def pause():
+    if player:
+        player.pause()
 
 def play():
-    m: vlc.Media = instance().media_new(mp3_file)
-    stop()
-    global player
-    player = m.player_new_from_media()
-    player.play()
-
-def play_to_chromecast(chromecast_ip, port):
-    m: vlc.Media = instance().media_new(mp3_file)
-    m.add_option(f":sout=#chromecast{{ip={chromecast_ip}, port={port}}}")
-    m.add_option(f":demux-filter=demux_chromecast")
-    stop()
-    global player
-    player = m.player_new_from_media()
-    player.play()
-
-def play_to_chromecast2(input, chromecast_ip, port):
-    m: vlc.Media = instance().media_new_location("dshow://")
-    m.add_option(f":adev={input}")
-    m.add_option(":dshow-vdev=None")
-    m.add_option(f":sout=#chromecast{{ip={chromecast_ip}, port={port}}}")
-    m.add_option(f":demux-filter=demux_chromecast")
-    stop()
-    global player
-    player = m.player_new_from_media()
-    player.play()
-    
-def test():
-    print("This is a test")
+    if player:
+        player.play()
 
 def stop():
     global player
@@ -48,5 +38,6 @@ def stop():
 def instance():
     global _instance
     if _instance is None:
+        # _instance = vlc.Instance("--verbose 9")
         _instance = vlc.Instance()
     return _instance

@@ -30,15 +30,12 @@
 ## Next steps
 
 - [ ] Run it in the Rpi
-  - [ ] Fix sample.mp3 for testing purposes. How to package it? How to access it?
-  - [ ] Create directory for application data. Now it is stored where waitress is deployed.
+  - [ ] Test if using the full name of the input device returned by the endpoint it works.
 - [ ] Check tutorial to upload package using apt.
   - [Package python for apt](https://monadical.com/posts/how-to-package-python-for-apt-deb.html)
 - [ ] Enable CLI
   - [Enabling CLI demo flask project](https://flask.palletsprojects.com/en/2.0.x/cli/)
-- [ ] Check how to get inputs in linux using Rpi.
-- [ ] Handle instance folder properly. Where should `known_devices.txt` be stored? What about `sample.mp3`?
-- [ ] Decouple from full vlc and maybe use libvlc already bundled in the package?
+- [ ] Properly stop chromecast connection.
 
 ## Cheatsheet
 
@@ -69,3 +66,8 @@
    - Hopefully this can be changed to either incorporating the libvlc libraries or installing a part of vlc. Right now it's around 1 gb, which seems too much for the use needed.
    - Or install vlc-bin and vlc-plugin-base. `sudo apt install vlc-bin` and `sudo apt install vlc-plugin-base`. It's smaller but still big. Aroung 700MB.
    - Still there might be a better way.
+7. Install PortAudio using apt `sudo apt install libportaudio2`.
+
+## Changes
+
+- Changed endpoint names.
