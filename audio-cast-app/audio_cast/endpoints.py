@@ -1,11 +1,11 @@
-from flask import Flask, Blueprint
+from flask import Flask, Blueprint, Response
 
 from . import discover_devices, discover_media, player
 
 bp = Blueprint('endpoints', __name__)
 
-@bp.route("/discover")
-def home():
+@bp.route("/discover/chromecasts")
+def discover_chromecasts():
     services = discover_devices.discover_chromecasts()
     chromecasts = []
 
@@ -20,26 +20,26 @@ def home():
 
     return {"devices": chromecasts}
 
-@bp.route("/oldcast/<ip>/<port>")
-def oldcast(ip, port):
-    player.play_to_chromecast(ip, port)
-    return f"Success to {ip} and {port}??"
-
-@bp.route("/cast/<input>/<ip>/<port>")
-def cast(input, ip, port):
-    player.play_to_chromecast2(input, ip, port)
-    return f"Success to {ip} and {port}??"
-
-@bp.route("/test")
-def test():
+@bp.route("/discover/media")
+def discover_media():
     return {"inputs": discover_media.discover_inputs()}
 
-@bp.route("/play")
+@bp.route("/player/cast/<input>/<ip>/<port>")
+def cast(input, ip, port):
+    player.play_media_to_chromecast(input, ip, port)
+    return Response(status=200)
+
+@bp.route("/player/play")
 def play():
     player.play()
-    return "All good"
+    return Response(status=200)
 
-@bp.route("/stop")
+@bp.route("/player/pause")
+def play():
+    player.pause()
+    return Response(status=200)
+
+@bp.route("/player/stop")
 def stop():
     player.stop()
-    return "All good 1"
+    return Response(status=200)
