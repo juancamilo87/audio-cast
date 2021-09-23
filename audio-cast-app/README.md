@@ -61,11 +61,6 @@ This requires to have `python3` installed and `pip` installed. Optionally also `
   - To clear delete the directory and create again `rm -r <DIR>`
 - Install packages from `requirements.txt` `pip install -r requirements.txt`.
 
-## Next steps
-
-- [ ] Run it in the Rpi
-  - [ ] Test if using the full name of the input device returned by the endpoint it works.
-
 ## Rpi steps
 
 1. Install pip using apt `sudo apt install python3-pip`
