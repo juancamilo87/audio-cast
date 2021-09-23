@@ -34,6 +34,9 @@ def stop():
         player.stop()
         player.release()
         player = None
+        return True
+    else:
+        return False
 
 def instance():
     global _instance
