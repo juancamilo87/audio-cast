@@ -1,4 +1,5 @@
 import vlc
+
 from . import utils
 
 _instance: vlc.Instance = None
@@ -11,7 +12,8 @@ def play_media_to_chromecast(input, chromecast_ip, port):
         m.add_option(f":adev={input}")
         m.add_option(":dshow-vdev=None")
     else: # Linux path uses alsa
-        m = instance().media_new_location(f"alsa://plug{input}")
+        alsa_input = utils.get_alsa_input(input)
+        m = instance().media_new_location(f"alsa://plug{alsa_input}")
     m.add_option(f":sout=#chromecast{{ip={chromecast_ip}, port={port}}}")
     m.add_option(f":demux-filter=demux_chromecast")
 
