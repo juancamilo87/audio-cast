@@ -1,1 +1,1 @@
-# Android application to control linux cast
+# Application to control audio cast server
