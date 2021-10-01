@@ -10,14 +10,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.scythe.audiocast.ui.theme.AudioCastTheme
 
-class MainActivity : ComponentActivity() {
+class CastActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             AudioCastTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
+                    CastScreen()
                 }
             }
         }
@@ -25,14 +26,18 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun CastScreen() {
+    //TODO: List of chromecasts to cast to
+    Text(text = "Something!")
 }
 
-@Preview(showBackground = true)
+@Preview(
+    showBackground = true
+)
 @Composable
-fun DefaultPreview() {
+fun CastScreenPreview() {
     AudioCastTheme {
-        Greeting("Android")
+        CastScreen()
+
     }
 }
