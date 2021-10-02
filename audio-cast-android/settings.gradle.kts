@@ -6,4 +6,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Audio Cast"
-include ':app'
+include(":app")
