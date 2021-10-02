@@ -1,4 +1,4 @@
-package com.scythe.audiocast
+package com.scythe.audiocast.ui.cast
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,7 +9,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.scythe.audiocast.ui.theme.AudioCastTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CastActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
