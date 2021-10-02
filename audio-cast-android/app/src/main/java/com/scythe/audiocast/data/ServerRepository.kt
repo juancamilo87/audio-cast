@@ -30,6 +30,8 @@ class ServerRepository @Inject constructor(@ApplicationContext context: Context)
 
     }
 
+    fun getHost() = "${getIp()}:${getPort()}"
+
     fun storeServer(ipAddress: String?, port: String?): Boolean {
         val portNum = port?.toIntOrNull()
         if (InetAddresses.isNumericAddress(ipAddress ?: "") &&
