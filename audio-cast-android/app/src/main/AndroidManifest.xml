@@ -5,13 +5,14 @@
     <application
         android:allowBackup="true"
         android:fullBackupOnly="true"
+        android:name=".AudioCastApp"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AudioCast">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.welcome.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.AudioCast.NoActionBar">
@@ -21,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CastActivity"
+        <activity android:name=".ui.cast.CastActivity"
             android:exported="false"
             android:theme="@style/Theme.AudioCast.NoActionBar" />
     </application>
