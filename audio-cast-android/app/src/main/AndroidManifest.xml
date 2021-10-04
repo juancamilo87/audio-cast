@@ -29,6 +29,15 @@
             android:name=".ui.cast.CastActivity"
             android:exported="false"
             android:theme="@style/Theme.AudioCast.NoActionBar" />
+        <activity
+            android:name=".ui.media.MediaActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AudioCast.NoActionBar" />
+        <activity
+            android:name=".ui.casting.CastingActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AudioCast.NoActionBar" />
+
     </application>
 
 </manifest>

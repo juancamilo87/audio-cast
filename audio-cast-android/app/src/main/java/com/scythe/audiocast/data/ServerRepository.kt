@@ -42,11 +42,10 @@ class ServerRepository @Inject constructor(@ApplicationContext context: Context)
             portNum > 0 &&
             portNum < 65536
         ) {
-            preferences.edit().run {
-                putString(IP_ADDRESS_KEY, ipAddress)
-                putInt(PORT_KEY, portNum)
-                apply()
-            }
+            preferences.edit()
+                .putString(IP_ADDRESS_KEY, ipAddress)
+                .putInt(PORT_KEY, portNum)
+                .apply()
             return true
         }
         return false

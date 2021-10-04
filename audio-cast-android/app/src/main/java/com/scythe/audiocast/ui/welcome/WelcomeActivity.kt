@@ -30,11 +30,10 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.scythe.audiocast.R
-import com.scythe.audiocast.ui.cast.CastActivity
+import com.scythe.audiocast.ui.media.MediaActivity
 import com.scythe.audiocast.ui.theme.AudioCastTheme
 import dagger.hilt.android.AndroidEntryPoint
 
-@ExperimentalAnimationApi
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
@@ -49,7 +48,7 @@ class MainActivity : ComponentActivity() {
                     WelcomeScreen(saveServer = {
                         val success = viewModel.saveServer()
                         if (success) {
-                            Intent(this, CastActivity::class.java).run {
+                            Intent(this, MediaActivity::class.java).run {
                                 startActivity(this)
                             }
                         } else {
@@ -62,7 +61,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@ExperimentalAnimationApi
 @Composable
 fun WelcomeScreen(welcomeViewModel: WelcomeViewModel = viewModel(), saveServer: () -> Unit) {
     val ipAddress: String by welcomeViewModel.serverIpAddress.observeAsState("")
@@ -75,7 +73,7 @@ fun WelcomeScreen(welcomeViewModel: WelcomeViewModel = viewModel(), saveServer: 
     )
 }
 
-@ExperimentalAnimationApi
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun WelcomeContent(
     ipAddress: String,
