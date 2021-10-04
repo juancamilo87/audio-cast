@@ -43,7 +43,7 @@ class AppModule {
         serverRepository: ServerRepository
     ): Retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl(serverRepository.getHost())
+        .baseUrl(serverRepository.getBaseUrl())
         .client(okHttpClient)
         .build()
 

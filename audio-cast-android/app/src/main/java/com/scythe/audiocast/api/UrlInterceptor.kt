@@ -12,10 +12,12 @@ class UrlInterceptor @Inject constructor(
 
         var request = chain.request()
 
-        val host = serverRepository.getHost()
+        val host = serverRepository.getIp()
+        val port = serverRepository.getPort()
 
         val newUrl = request.url.newBuilder()
             .host(host)
+            .port(port)
             .build()
 
         request = request.newBuilder()

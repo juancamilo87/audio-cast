@@ -66,6 +66,8 @@ dependencies {
     implementation(Deps.retrofit)
     implementation(Deps.retrofitGson)
     implementation(Deps.okHttpLoggingInterceptor)
+    implementation(Deps.accompanistSwipeRefresh)
+    implementation(Deps.coroutines)
 
     kapt(Deps.hiltAnnotations)
 

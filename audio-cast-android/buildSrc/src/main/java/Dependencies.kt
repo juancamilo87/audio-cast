@@ -7,10 +7,12 @@ object BuildPlugins {
 
 object Deps {
     val coreKtx by lazy { "androidx.core:core-ktx:${Versions.coreKtx}" }
+    val coroutines by lazy { "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}" }
+    val accompanistSwipeRefresh by lazy { "com.google.accompanist:accompanist-swiperefresh:${Versions.accompanistSwipeRefresh}" }
     val appCompat by lazy { "androidx.appcompat:appcompat:${Versions.appCompat}" }
     val material by lazy { "com.google.android.material:material:${Versions.material}" }
     val composeUi by lazy { "androidx.compose.ui:ui:${Versions.compose}" }
-    val composeMaterial by lazy {"androidx.compose.material:material:${Versions.compose}" }
+    val composeMaterial by lazy { "androidx.compose.material:material:${Versions.compose}" }
     val composePreview by lazy { "androidx.compose.ui:ui-tooling-preview:${Versions.compose}" }
     val lifecycleKtx by lazy { "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleKtx}" }
     val activityCompose by lazy { "androidx.activity:activity-compose:${Versions.activityCompose}" }
