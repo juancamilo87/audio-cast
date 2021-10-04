@@ -10,6 +10,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./audio-cast-android
 
     steps:
     - uses: actions/checkout@v2
@@ -20,8 +23,6 @@ jobs:
         distribution: 'adopt'
         cache: gradle
 
-    - name: Move to Android Project directory
-      run: cd audio-cast-android
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
