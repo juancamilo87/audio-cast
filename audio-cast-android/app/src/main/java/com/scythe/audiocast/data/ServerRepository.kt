@@ -21,16 +21,19 @@ class ServerRepository @Inject constructor(@ApplicationContext context: Context)
         return preferences.getString(IP_ADDRESS_KEY, "") ?: ""
     }
 
-    fun getPort(): String {
-        return preferences.getInt(PORT_KEY, -1).run {
-            if (this == -1) {
+    fun getPort(): Int {
+        return preferences.getInt(PORT_KEY, -1)
+    }
+
+    fun getPortText(): String {
+        return getPort().run {
+            if (this <= 0) {
                 ""
             } else this.toString()
         }
-
     }
 
-    fun getHost() = "${getIp()}:${getPort()}"
+    fun getBaseUrl() = "http://${getIp()}:${getPortText()}"
 
     fun storeServer(ipAddress: String?, port: String?): Boolean {
         val portNum = port?.toIntOrNull()

@@ -1,9 +1,11 @@
 object Versions {
     const val activityCompose = "1.3.1"
+    const val accompanistSwipeRefresh = "0.19.0"
     const val appCompat = "1.3.1"
     const val compose = "1.0.3"
     const val constraintLayoutCompose = "1.0.0-rc01"
     const val coreKtx = "1.6.0"
+    const val coroutines = "1.3.9"
     const val espresso = "3.4.0"
     const val gradleDependencies = "0.39.0"
     const val gradlePlugin = "7.0.2"

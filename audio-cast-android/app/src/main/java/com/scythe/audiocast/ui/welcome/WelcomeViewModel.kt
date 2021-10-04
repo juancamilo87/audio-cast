@@ -15,7 +15,7 @@ class WelcomeViewModel @Inject constructor(
     private val _serverIpAddress = MutableLiveData(serverRepository.getIp())
     val serverIpAddress: LiveData<String> = _serverIpAddress
 
-    private val _serverPort = MutableLiveData(serverRepository.getPort())
+    private val _serverPort = MutableLiveData(serverRepository.getPortText())
     val serverPort: LiveData<String> = _serverPort
 
     fun onServerChange(newServer: String) {
